@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+FitBuddy - Home
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero">
+
+
+<div>
+
+    <p class="eyebrow">
+        AI FITNESS PLANNER
+    </p>
+
+
+    <h1>
+        Your 7-Day Fitness Plan
+    </h1>
+
+
+    <p class="lead">
+
+        Enter your details and
+        FitBuddy will create your
+        personalized workout plan.
+
+    </p>
+
+</div>
+
+
+<form
+    class="card"
+    action="/generate-workout"
+    method="post"
+>
+
+
+<label>
+
+    Name
+
+    <input
+        name="username"
+        required
+        placeholder="Your name"
+    >
+
+</label>
+
+
+<label>
+
+    User ID
+
+    <input
+        name="user_id"
+        required
+        placeholder="Example: FB001"
+    >
+
+</label>
+
+
+<div class="two">
+
+
+<label>
+
+    Age
+
+    <input
+        name="age"
+        type="number"
+        min="13"
+        max="100"
+        required
+    >
+
+</label>
+
+
+<label>
+
+    Weight (kg)
+
+    <input
+        name="weight"
+        type="number"
+        min="20"
+        max="400"
+        step="0.1"
+        required
+    >
+
+</label>
+
+
+</div>
+
+
+<label>
+
+    Fitness Goal
+
+    <select name="goal">
+
+        <option value="weight loss">
+            Weight Loss
+        </option>
+
+        <option value="muscle gain">
+            Muscle Gain
+        </option>
+
+        <option value="general wellness">
+            General Wellness
+        </option>
+
+        <option value="flexibility">
+            Flexibility
+        </option>
+
+    </select>
+
+</label>
+
+
+<label>
+
+    Intensity
+
+    <select name="intensity">
+
+        <option value="low">
+            Low
+        </option>
+
+        <option value="medium" selected>
+            Medium
+        </option>
+
+        <option value="high">
+            High
+        </option>
+
+    </select>
+
+</label>
+
+
+<button type="submit">
+
+    Generate 7-Day Plan
+
+</button>
+
+
+</form>
+
+
+</section>
+
+
+<section class="cards">
+
+
+<div class="card">
+
+    <h3>
+        Workout
+    </h3>
+
+    <p>
+        7-day personalized workout.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Nutrition
+    </h3>
+
+    <p>
+        Goal-based nutrition tip.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Feedback
+    </h3>
+
+    <p>
+        Update your plan using feedback.
+    </p>
+
+</div>
+
+
+</section>
+
+
+{% endblock %}

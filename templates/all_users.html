@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+FitBuddy - Admin
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="head">
+
+
+<div>
+
+    <p class="eyebrow">
+        ADMIN VIEW
+    </p>
+
+    <h1>
+        All Users
+    </h1>
+
+</div>
+
+
+<a
+    class="btn2"
+    href="/"
+>
+    Back
+</a>
+
+
+</div>
+
+
+<div class="card table">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+User
+</th>
+
+<th>
+Profile
+</th>
+
+<th>
+Original Plan
+</th>
+
+<th>
+Updated Plan
+</th>
+
+<th>
+Feedback
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+{% for row in rows %}
+
+
+<tr>
+
+
+<td>
+
+<b>
+{{ row.user.username }}
+</b>
+
+<br>
+
+{{ row.user.user_id }}
+
+</td>
+
+
+<td>
+
+{{ row.user.age }} yrs
+
+<br>
+
+{{ row.user.weight }} kg
+
+<br>
+
+{{ row.user.goal }}
+
+<br>
+
+{{ row.user.intensity }}
+
+</td>
+
+
+<td>
+
+<pre>
+
+{{ row.plan.original_plan
+if row.plan
+else "—" }}
+
+</pre>
+
+</td>
+
+
+<td>
+
+<pre>
+
+{{ row.plan.updated_plan
+if row.plan and row.plan.updated_plan
+else "—" }}
+
+</pre>
+
+</td>
+
+
+<td>
+
+{{ row.plan.feedback
+if row.plan and row.plan.feedback
+else "—" }}
+
+</td>
+
+
+</tr>
+
+
+{% else %}
+
+
+<tr>
+
+<td colspan="5">
+
+No users yet.
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+{% endblock %}

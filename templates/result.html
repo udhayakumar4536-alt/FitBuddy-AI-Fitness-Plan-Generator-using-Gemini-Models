@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+FitBuddy - Your Plan
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="head">
+
+
+<div>
+
+    <p class="eyebrow">
+        PERSONALIZED PLAN
+    </p>
+
+    <h1>
+        {{ user.username }}'s Plan
+    </h1>
+
+</div>
+
+
+<a
+    class="btn2"
+    href="/"
+>
+    New Plan
+</a>
+
+
+</div>
+
+
+<div class="profile card">
+
+
+<div>
+
+    <b>User ID</b>
+
+    {{ user.user_id }}
+
+</div>
+
+
+<div>
+
+    <b>Age</b>
+
+    {{ user.age }}
+
+</div>
+
+
+<div>
+
+    <b>Weight</b>
+
+    {{ user.weight }} kg
+
+</div>
+
+
+<div>
+
+    <b>Goal</b>
+
+    {{ user.goal }}
+
+</div>
+
+
+<div>
+
+    <b>Intensity</b>
+
+    {{ user.intensity }}
+
+</div>
+
+
+</div>
+
+
+{% if updated %}
+
+<div class="success">
+
+    Your plan was updated
+    using your feedback.
+
+</div>
+
+{% endif %}
+
+
+<section class="card">
+
+
+<h2>
+
+{% if updated %}
+
+Updated Workout Plan
+
+{% else %}
+
+7-Day Workout Plan
+
+{% endif %}
+
+</h2>
+
+
+<pre>
+
+{{ active_plan }}
+
+</pre>
+
+
+</section>
+
+
+<section class="card">
+
+
+<h2>
+
+Nutrition / Recovery Tip
+
+</h2>
+
+
+<p>
+
+{{ plan.nutrition_tip }}
+
+</p>
+
+
+</section>
+
+
+<section class="card">
+
+
+<h2>
+
+Update Your Plan
+
+</h2>
+
+
+<form
+    action="/submit-feedback"
+    method="post"
+>
+
+
+<input
+    type="hidden"
+    name="user_id"
+    value="{{ user.user_id }}"
+>
+
+
+<textarea
+    name="feedback"
+    required
+    placeholder="Example: Add more cardio..."
+></textarea>
+
+
+<button type="submit">
+
+    Update Plan
+
+</button>
+
+
+</form>
+
+
+</section>
+
+
+{% endblock %}
